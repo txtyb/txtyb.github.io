@@ -268,7 +268,7 @@ Clonezilla（...">
     },
     
     "datePublished": "2019-07-15T12:43:18.000Z",
-    "dateModified": "2019-07-16T07:05:47.929Z",
+    "dateModified": "2019-07-20T12:51:50.920Z",
     "author": {
         "@type": "Person",
         "name": "txtyb",
@@ -514,7 +514,7 @@ Clonezilla（..."
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#制作CLonezilla-LiveCD启动盘"><span class="post-toc-number">1.</span> <span class="post-toc-text">制作CLonezilla LiveCD启动盘</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开始第二次尝试"><span class="post-toc-number">2.</span> <span class="post-toc-text">开始第二次尝试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开机"><span class="post-toc-number">3.</span> <span class="post-toc-text">开机</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#制作CLonezilla-LiveCD启动盘"><span class="post-toc-number">1.</span> <span class="post-toc-text">制作CLonezilla LiveCD启动盘</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开始第二次尝试"><span class="post-toc-number">2.</span> <span class="post-toc-text">开始第二次尝试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开机"><span class="post-toc-number">3.</span> <span class="post-toc-text">开机</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#后续"><span class="post-toc-number">4.</span> <span class="post-toc-text">后续</span></a></li></ol>
                             </div>
                         
                     
@@ -535,7 +535,12 @@ Clonezilla（..."
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bcdboot J:\Windows /s G: /f UEFI /l zh-cn</span><br></pre></td></tr></table></figure>
 
 <p>J盘在pe中被挂载为原windows启动盘，G盘被挂载为EFI启动分区。</p>
-<p><strong>未完待续</strong></p>
+<p><code>J:\Windows</code>为win10系统所在目录，<code>/s</code>指定引导分区，<code>/f</code>指定引导类型，<code>/l</code>指定地区语言。</p>
+<p>重启，跳过磁盘检查，成功进入Windows系统。</p>
+<p>不过，很快我就发现，系统有比较严重的问题。首先是频繁弹出的错误提示。<br><img src="https://i.loli.net/2019/07/20/5d330a2b7b82697451.jpg" alt="machine.config"><br>用同目录下的<code>machine.config.default</code>替换<code>machine.config</code>后错误提示消失，但是可以发现系统仍然有严重问题，例如oem预装的的游戏控制中心无限加载。</p>
+<p>尝试用<code>dism</code>检查系统映像完整性，结果是没问题。<br><img src="https://i.loli.net/2019/07/20/5d330c151e05c69799.jpg" alt="dism"></p>
+<p>随后尝试用msdn的iso镜像覆盖安装系统修复，安装发生错误终止。</p>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>多方折腾尝试修复无果，无奈只有将原硬盘插了回去，进入原硬盘上的系统，用dism++备份系统镜像，来日再次尝试。<img src="https://i.loli.net/2019/07/20/5d330e1bbb75e83521.jpg" alt="dism++"></p>
 
                     </article>
                     
@@ -543,7 +548,7 @@ Clonezilla（..."
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2019-07-16");
+        var dateUpdate = Date.parse("2019-07-20");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -558,7 +563,7 @@ Clonezilla（..."
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-07-15T12:43:18.000Z" itemprop="datePublished">2019-07-15</time>
 
-    , 最后修改于&nbsp;<time datetime="2019-07-16T07:05:47.929Z" itemprop="dateModified">2019-07-16</time>
+    , 最后修改于&nbsp;<time datetime="2019-07-20T12:51:50.920Z" itemprop="dateModified">2019-07-20</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
