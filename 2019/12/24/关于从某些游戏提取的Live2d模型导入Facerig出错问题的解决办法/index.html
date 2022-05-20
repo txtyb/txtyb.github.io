@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html >
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法 | txtyb&#39;s Blog</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="从某些游戏提取的Live2d导入Facerig会出现软件直接卡死的现象（模型格式为moc3，Cubism3.0标准）。
+">
+
+<!-- Keywords -->
+<meta name="keywords" content=", Live2d, Facerig, 折腾">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="txtyb&#39;s Blog">
+<meta name="msapplication-starturl" content="http://txtyb.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="txtyb&#39;s Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法 | txtyb&#39;s Blog">
+<meta property="og:site_name" content="txtyb&#39;s Blog">
+
+
+
+<meta property="og:url" content="http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+<meta property="og:image" content="http://txtyb.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="从某些游戏提取的Live2d导入Facerig会出现软件直接卡死的现象（模型格式为moc3，Cubism3.0标准）。
+">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-12-23T16:14:46.000Z">
+    <meta property="article:modified_time" content="2019-12-23T16:14:46.000Z">
+    <meta property="article:author" content="txtyb">
+    <meta property="og:article:tag" content=", Live2d, Facerig, 折腾"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/",
+    "@type": "BlogPosting",
+    "logo": "http://txtyb.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"
+    },
+    "headline": "关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法 | txtyb&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://txtyb.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-12-23T16:14:46.000Z",
+    "dateModified": "2020-06-21T07:37:51.209Z",
+    "author": {
+        "@type": "Person",
+        "name": "txtyb",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/avatar.jpg"
+        },
+        "description": "The quieter you be, the more you can hear."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "txtyb&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://txtyb.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", Live2d, Facerig, 折腾",
+    "description": "从某些游戏提取的Live2d导入Facerig会出现软件直接卡死的现象（模型格式为moc3，Cubism3.0标准）。
+"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">txtyb&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The quieter you be, the more you can hear.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=txtyb's Blog&url=http://txtyb.github.io&pic=http://txtyb.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=txtyb's Blog&url=http://txtyb.github.io&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io&title=关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法&summary=&pics=http://txtyb.github.io/img/suka-favicon.ico&url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://txtyb.github.io&text=关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,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" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.jpg" src="/img/suka-lazyload.gif" alt="txtyb's Avatar">
+        <span>2019-12-24</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法&url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&pic=http://txtyb.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法&url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&title=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=txtyb's Blog&summary=&pics=http://txtyb.github.io/img/suka-favicon.ico&url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://txtyb.github.io/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&text=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,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" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.</span> <span class="post-toc-text">方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="post-toc-number">2.</span> <span class="post-toc-text">效果预览</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <p>从某些游戏提取的Live2d导入Facerig会出现软件直接卡死的现象（模型格式为<code>moc3</code>，Cubism3.0标准）。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>经过半个晚上的试错，得出一暂时性办法。</p>
+<ol>
+<li>将模型文件夹内<code>.json</code>文件换行符从CRLF改为LF。</li>
+<li>删除模型文件夹内的<code>montions</code>文件夹（<code>model.json</code>内对应<code>montions</code>对应字段可删可不删）。</li>
+</ol>
+<h1 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h1><p><img src="https://i.loli.net/2019/12/24/3yUu8cbjdXGiYLf.png" alt="z43.png"></p>
+<blockquote>
+<p>关于提取，可以参照<a target="_blank" rel="noopener" href="https://www.perfare.net/1270.html">这篇博文</a>。</p>
+</blockquote>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2020-06-21");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-23T16:14:46.000Z" itemprop="datePublished">2019-12-24</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-06-21T07:37:51.209Z" itemprop="dateModified">2020-06-21</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/Live2d/" rel="tag">#&nbsp;Live2d</a>
+
+<a class="post-tags-list-item" href="/tags/Facerig/" rel="tag">#&nbsp;Facerig</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%8A%98%E8%85%BE/" rel="tag">#&nbsp;折腾</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2021/11/09/Android%E7%BC%96%E8%AF%91%E6%8C%87%E5%8D%97/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Android编译指南</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://txtyb.github.io">txtyb&#39;s Blog</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+        
+            Hosted on <a target="_blank" href="https://github.com/txtyb/txtyb.github.io" rel="nofollow noopener noreferrer noopener">GitHub Pages</a>
+        
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"log":false});</script></body>
+
+</html>

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html >
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题 | txtyb&#39;s Blog</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="配置环境">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 编程, C, VSCode">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="txtyb&#39;s Blog">
+<meta name="msapplication-starturl" content="http://txtyb.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="txtyb&#39;s Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题 | txtyb&#39;s Blog">
+<meta property="og:site_name" content="txtyb&#39;s Blog">
+
+
+
+<meta property="og:url" content="http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/">
+<meta property="og:image" content="https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png">
+
+<meta property="og:description" content="配置环境">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-09-21T00:53:30.000Z">
+    <meta property="article:modified_time" content="2019-09-21T00:53:30.000Z">
+    <meta property="article:author" content="txtyb">
+    <meta property="og:article:tag" content=", 编程, C, VSCode"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/",
+    "@type": "BlogPosting",
+    "logo": "http://txtyb.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/"
+    },
+    "headline": "VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题 | txtyb&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png"
+    },
+    
+    "datePublished": "2019-09-21T00:53:30.000Z",
+    "dateModified": "2019-12-20T02:42:54.460Z",
+    "author": {
+        "@type": "Person",
+        "name": "txtyb",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/avatar.jpg"
+        },
+        "description": "The quieter you be, the more you can hear."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "txtyb&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://txtyb.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 编程, C, VSCode",
+    "description": "配置环境"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">txtyb&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The quieter you be, the more you can hear.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=txtyb's Blog&url=http://txtyb.github.io&pic=https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=txtyb's Blog&url=http://txtyb.github.io&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io&title=VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题&summary=&pics=https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png&url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://txtyb.github.io&text=VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFVElEQVR42u2cwXLrSAwD/f8/rb3naYgGpcuWWpfEjjzStKpYJADnd3lcPxEIQQhCEIIQhDBC+A3H33P+WeTmvL+/n9ZK1/h7zvT67lpoX0IQghBuIdwWjbDY3XmnG5nWnjaYgEwPJe1LCEIQwgzh7kKni9CLkSLVFMmpUJ/ua7pfIQhBCDsIzU2dCuTUQKXzJ6j0WkIQghDegTAVsVNxbIea0823hW8a4IQgBCF0EMZB41Co0ueSkLIVdWjz9NoUKQQhfAzCpmD9H36+pjYLQQgfgoCMy6XRcWp6kqBLXifz53VXWghC+AgEMsBMzQi9icbMIRtNA9fU9AlBCEJgEEjoIoU0SEGcBN1mow0gFNIQghCEEA1U8rdU/EiwawpokCaOwhaCEISQIUzFkRS81PRQY/apoJoCX+MUKQQhCAF/sFo4BD2I0boJfdFmbFSbhSAEIdQFLjU1aaghgs32aEJbQhCCEDIEEraYmiwiqpIGpzFtkKDaiCpCEMLHIUybnRqcRnRNG3xzs6mAj+aLEIQghDGEMS3chDveGqDSQEUM41FoFYIQhHCR4eb0XjJpWkO2KaDTgLTqGIUgBCFcbYGixgkpoiko1myYFnMhCEEIHEIzBJEClIIZmwEqCT1tYycEIQjhLKoQISKdM0EgjddmYEohsUpZEoIQhIAMU9okUXN0EkOoEUSM2biuEIQghFsIdPB4K+CVhN1UTFvjBRmyQhCCEB6Jmo0R2ggozcCUBNwo7AhBCEI4FsZksDQiKb2Rppi1hi0q3kIQghDGZokMJdSwTQEJWow3AxUVcoUgBCHkgHcTuKBi7FZg3TRE5DpCEIIQMgSyiUkEeQpvMoUnwZYYMJUrLQQhfBxCCj4+GaCmYalZOxm86Tg2dkIQghCi+ZKGFVKASDEjhg0VgbfBLyEIQQj3zRJtTrZiCwlhkwfxxgM4DlBCEIIQLiqGJnOD3OhUGElonAAjhTcOUEIQwschECGFGiTE9NiKNE+OoygsBCEIoQ5uEbGUbHAqYKkxS41U8yBWYU4hCOFDEJLAQQXYKkRZAqJma72GEIQghGjIpqKXwg90GGrF1sn0SSYuGqCEIAQhYEMlhavQsFIEuLFQCorm+J4QhCCEoyHbCJ1UAE2FCwesfu8FwYUgBCHMEFLzQQMcpFlpzRxyLgl/Hu9fCEIQwhjcakIbZLPEFCVhjMkIaowjIQhBCFxUoUNQG7QgImkKZLfBbfoQhCAEIcyGLBYjyrDU2wPUxtRB6TUhCEEIMfhAzVkCcivUELGGBDui0CoEIQjhIsFNYng2ZisVSimM6fxxX0IQghCw+ZLCnSRInRqk7SBFrp8EGCEIQQgMwmRgbIJddJh5Y6AigQ9UGIUgBCHgfzi9GV7SQLU1YFPTFINfQhCCEMaQxjTwpNADDV+S4NVGOCEm0XGAEoIQhLD6IlhjfCRgUzhsGsiIYELNZCEIQQjsSx9TM0KHoU1Be2rYkoIqBCEIoQ9uNQ1PMnOT4JLEndFQhesci78QhCAEbL6QRoVsggqkaeMJEt1HZcgKQQgfh0AHJlI400boddNQloawR8EtIQjhgxDS0Rgp9P0UCms23hTjoyErBCEIAX0pqwFEG6wpOEFEU3r+ypUWghCEgMXOjeg5ia8JGjVtSGFEwS0hCEEI12YgaQJfNMTRbJQ2W6TIC0EIQughNMZICn2kYkobpEZ4GdcVghCEsCqMbcGZQlgknE3DZNRUPg5sQhCCEB4NUKTgtGHPFCBtXlMRSAhCEMLed0iDFG18aMFqzJnUSK1daSEI4cMQvnwIQQhCEIIQhCCE2+M/kBhkruOTXxYAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+            <!-- # Post Thumbnail # -->
+            <div class="card-image" style="background-image: url('https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png');"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.jpg" src="/img/suka-lazyload.gif" alt="txtyb's Avatar">
+        <span>2019-09-21</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题&url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/&pic=https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=VSCode配置C语言调试环境以及解决调试窗口一闪而过的问题&url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/&title=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=txtyb's Blog&summary=&pics=https://i.loli.net/2019/09/21/6foBa3yL7FXbGU2.png&url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://txtyb.github.io/2019/09/21/VSCode%E9%85%8D%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E8%B0%83%E8%AF%95%E7%AA%97%E5%8F%A3%E4%B8%80%E9%97%AA%E8%80%8C%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98/&text=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAEECAAAAADrYxXWAAAFVElEQVR42u2cwXLrSAwD/f8/rb3naYgGpcuWWpfEjjzStKpYJADnd3lcPxEIQQhCEIIQhDBC+A3H33P+WeTmvL+/n9ZK1/h7zvT67lpoX0IQghBuIdwWjbDY3XmnG5nWnjaYgEwPJe1LCEIQwgzh7kKni9CLkSLVFMmpUJ/ua7pfIQhBCDsIzU2dCuTUQKXzJ6j0WkIQghDegTAVsVNxbIea0823hW8a4IQgBCF0EMZB41Co0ueSkLIVdWjz9NoUKQQhfAzCpmD9H36+pjYLQQgfgoCMy6XRcWp6kqBLXifz53VXWghC+AgEMsBMzQi9icbMIRtNA9fU9AlBCEJgEEjoIoU0SEGcBN1mow0gFNIQghCEEA1U8rdU/EiwawpokCaOwhaCEISQIUzFkRS81PRQY/apoJoCX+MUKQQhCAF/sFo4BD2I0boJfdFmbFSbhSAEIdQFLjU1aaghgs32aEJbQhCCEDIEEraYmiwiqpIGpzFtkKDaiCpCEMLHIUybnRqcRnRNG3xzs6mAj+aLEIQghDGEMS3chDveGqDSQEUM41FoFYIQhHCR4eb0XjJpWkO2KaDTgLTqGIUgBCFcbYGixgkpoiko1myYFnMhCEEIHEIzBJEClIIZmwEqCT1tYycEIQjhLKoQISKdM0EgjddmYEohsUpZEoIQhIAMU9okUXN0EkOoEUSM2biuEIQghFsIdPB4K+CVhN1UTFvjBRmyQhCCEB6Jmo0R2ggozcCUBNwo7AhBCEI4FsZksDQiKb2Rppi1hi0q3kIQghDGZokMJdSwTQEJWow3AxUVcoUgBCHkgHcTuKBi7FZg3TRE5DpCEIIQMgSyiUkEeQpvMoUnwZYYMJUrLQQhfBxCCj4+GaCmYalZOxm86Tg2dkIQghCi+ZKGFVKASDEjhg0VgbfBLyEIQQj3zRJtTrZiCwlhkwfxxgM4DlBCEIIQLiqGJnOD3OhUGElonAAjhTcOUEIQwschECGFGiTE9NiKNE+OoygsBCEIoQ5uEbGUbHAqYKkxS41U8yBWYU4hCOFDEJLAQQXYKkRZAqJma72GEIQghGjIpqKXwg90GGrF1sn0SSYuGqCEIAQhYEMlhavQsFIEuLFQCorm+J4QhCCEoyHbCJ1UAE2FCwesfu8FwYUgBCHMEFLzQQMcpFlpzRxyLgl/Hu9fCEIQwhjcakIbZLPEFCVhjMkIaowjIQhBCFxUoUNQG7QgImkKZLfBbfoQhCAEIcyGLBYjyrDU2wPUxtRB6TUhCEEIMfhAzVkCcivUELGGBDui0CoEIQjhIsFNYng2ZisVSimM6fxxX0IQghCw+ZLCnSRInRqk7SBFrp8EGCEIQQgMwmRgbIJddJh5Y6AigQ9UGIUgBCHgfzi9GV7SQLU1YFPTFINfQhCCEMaQxjTwpNADDV+S4NVGOCEm0XGAEoIQhLD6IlhjfCRgUzhsGsiIYELNZCEIQQjsSx9TM0KHoU1Be2rYkoIqBCEIoQ9uNQ1PMnOT4JLEndFQhesci78QhCAEbL6QRoVsggqkaeMJEt1HZcgKQQgfh0AHJlI400boddNQloawR8EtIQjhgxDS0Rgp9P0UCms23hTjoyErBCEIAX0pqwFEG6wpOEFEU3r+ypUWghCEgMXOjeg5ia8JGjVtSGFEwS0hCEEI12YgaQJfNMTRbJQ2W6TIC0EIQughNMZICn2kYkobpEZ4GdcVghCEsCqMbcGZQlgknE3DZNRUPg5sQhCCEB4NUKTgtGHPFCBtXlMRSAhCEMLed0iDFG18aMFqzJnUSK1daSEI4cMQvnwIQQhCEIIQhCCE2+M/kBhkruOTXxYAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEC-C-%E6%8B%93%E5%B1%95"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装配置C&#x2F;C++拓展</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AEtask-json%E3%80%81Launcher-json%E3%80%82"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置task.json、Launcher.json。</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%A3%E6%96%87"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">正文</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PS"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">PS</span></a></li></ol></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><h2 id="安装配置C-C-拓展"><a href="#安装配置C-C-拓展" class="headerlink" title="安装配置C/C++拓展"></a>安装配置C/C++拓展</h2><p>如图，安装C/C++拓展。<img src="https://i.loli.net/2019/09/21/HlhCjdNvowke9Jc.png" alt="批注 2019-09-21 090734.png"><br><code>Ctrl+Shift+p</code>打开命令窗口，选择<code>C/C++:编辑配置(UI)</code><br><img src="https://i.loli.net/2019/09/21/BPEK2StFjc761TV.png" alt="批注 2019-09-21 090233.png">更改Compiler path为MingW可执行文件所在目录(g++.exe,gcc.exe,gdb.exe所在目录)。更改InlelliSense Mode选项为<code>gcc-x64</code>。<img src="https://i.loli.net/2019/09/21/d23WgMBzhKw5Xmv.png" alt="批注 2019-09-21 091500.png"></p>
+<h2 id="配置task-json、Launcher-json。"><a href="#配置task-json、Launcher-json。" class="headerlink" title="配置task.json、Launcher.json。"></a>配置<code>task.json</code>、<code>Launcher.json</code>。</h2><p>打开你的C语言程序工作目录，<code>Ctrl+Shift+p</code>输入task，选择Tasks：Configure Default Build Task，配置如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tasks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileBasenameNoExtension&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileBasenameNoExtension&#125;.c&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;g++.exe build active file&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;-g&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;-o&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;options&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;problemMatcher&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;$gcc&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;group&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;build&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;isDefault&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>注意将Command和cwd选项后的目录根据个人情况改为对应MingW可执行文件目录。<br><code>Ctrl+SHift+p</code>命令框输入launcher，选择Debug: Open Launcher.json，配置如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">     <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">         <span class="punctuation">&#123;</span></span><br><span class="line">             <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;(Windows) Launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppvsdbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmd&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                 <span class="string">&quot;/C&quot;</span><span class="punctuation">,</span></span><br><span class="line">                 <span class="string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">                 <span class="string">&quot;&amp;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                 <span class="string">&quot;pause&quot;</span></span><br><span class="line"></span><br><span class="line">             <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span><span class="keyword">true</span></span><br><span class="line">         <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">         <span class="punctuation">&#123;</span></span><br><span class="line">             <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;(gdb) Launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cppdbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;stopAtEntry&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;externalConsole&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;MIMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gdb&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;miDebuggerPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gdb.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;preLaunchTask&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gcc&quot;</span><span class="punctuation">,</span></span><br><span class="line">             <span class="attr">&quot;setupCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                 <span class="punctuation">&#123;</span></span><br><span class="line">                     <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Enable pretty-printing for gdb&quot;</span><span class="punctuation">,</span></span><br><span class="line">                     <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-enable-pretty-printing&quot;</span><span class="punctuation">,</span></span><br><span class="line">                     <span class="attr">&quot;ignoreFailures&quot;</span><span class="punctuation">:</span> <span class="keyword">true</span></span><br><span class="line">                 <span class="punctuation">&#125;</span></span><br><span class="line">             <span class="punctuation">]</span></span><br><span class="line">         <span class="punctuation">&#125;</span></span><br><span class="line">     <span class="punctuation">]</span></span><br><span class="line"> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>注意将miDebuggerPath一项改为你的gdb.exe所在目录。<br>配置到此完成。</p>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>在程序文件界面按<code>Ctrl+Shift+B</code>编译程序。<img src="https://i.loli.net/2019/09/21/avwquO5GsIhpoSm.png" alt="批注 2019-09-21 093346.png"><br>编译完成后按<code>F5</code>并在左上角选择(Windows)Launcher运行程序。<img src="https://i.loli.net/2019/09/21/4NiAXoIEsqfu9Fg.png" alt="1.png"><br><img src="https://i.loli.net/2019/09/21/cfoTVkUtumlFjz2.png" alt="批注 2019-09-21 094244.png"></p>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><blockquote>
+<p>程序执行完毕不关闭窗口利用了<code>cmd</code>命令的<code>/C</code>参数。</p>
+</blockquote>
+<blockquote>
+<p>若是想设置Break Point进行断点测试，需要在运行程序前将配置切换为(gdb)Launcher。</p>
+</blockquote>
+<blockquote>
+<p>若是换用新的工作文件夹，将原文件夹下的<code>.vscode</code>文件夹拷贝过去就不用重新配置了。</p>
+</blockquote>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-12-20");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-09-21T00:53:30.000Z" itemprop="datePublished">2019-09-21</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-12-20T02:42:54.460Z" itemprop="dateModified">2019-12-20</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">#&nbsp;编程</a>
+
+<a class="post-tags-list-item" href="/tags/C/" rel="tag">#&nbsp;C</a>
+
+<a class="post-tags-list-item" href="/tags/VSCode/" rel="tag">#&nbsp;VSCode</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2019/12/24/%E5%85%B3%E4%BA%8E%E4%BB%8E%E6%9F%90%E4%BA%9B%E6%B8%B8%E6%88%8F%E6%8F%90%E5%8F%96%E7%9A%84Live2d%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5Facerig%E5%87%BA%E9%94%99%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">关于从某些游戏提取的Live2d模型导入Facerig出错问题的解决办法</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/09/03/Win10%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5%E5%AE%BD%E5%B8%A6(PPPOE)/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Win10开机自动连接宽带(PPPOE)</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://txtyb.github.io">txtyb&#39;s Blog</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+        
+            Hosted on <a target="_blank" href="https://github.com/txtyb/txtyb.github.io" rel="nofollow noopener noreferrer noopener">GitHub Pages</a>
+        
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"log":false});</script></body>
+
+</html>

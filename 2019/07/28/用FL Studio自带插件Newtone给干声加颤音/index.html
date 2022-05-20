@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html >
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>用 FL Studio自带插件Newtone给干声加颤音 | txtyb&#39;s Blog</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="在使用Melodyne调声的时候遇到了问题，Melodyne的Pitch工具仅支持对音符原有颤音曲线的幅度进行调整（包括颤音幅度和偏移），有很大局限。">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 音乐, FL Studio, Newtone">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="txtyb&#39;s Blog">
+<meta name="msapplication-starturl" content="http://txtyb.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="txtyb&#39;s Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="用 FL Studio自带插件Newtone给干声加颤音 | txtyb&#39;s Blog">
+<meta property="og:site_name" content="txtyb&#39;s Blog">
+
+
+
+<meta property="og:url" content="http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/">
+<meta property="og:image" content="http://txtyb.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="在使用Melodyne调声的时候遇到了问题，Melodyne的Pitch工具仅支持对音符原有颤音曲线的幅度进行调整（包括颤音幅度和偏移），有很大局限。">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-07-28T03:31:12.000Z">
+    <meta property="article:modified_time" content="2019-07-28T03:31:12.000Z">
+    <meta property="article:author" content="txtyb">
+    <meta property="og:article:tag" content=", 音乐, FL Studio, Newtone"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/",
+    "@type": "BlogPosting",
+    "logo": "http://txtyb.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/"
+    },
+    "headline": "用 FL Studio自带插件Newtone给干声加颤音 | txtyb&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://txtyb.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-07-28T03:31:12.000Z",
+    "dateModified": "2019-12-20T02:42:54.462Z",
+    "author": {
+        "@type": "Person",
+        "name": "txtyb",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/avatar.jpg"
+        },
+        "description": "The quieter you be, the more you can hear."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "txtyb&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://txtyb.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://txtyb.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 音乐, FL Studio, Newtone",
+    "description": "在使用Melodyne调声的时候遇到了问题，Melodyne的Pitch工具仅支持对音符原有颤音曲线的幅度进行调整（包括颤音幅度和偏移），有很大局限。"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">txtyb&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The quieter you be, the more you can hear.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=txtyb's Blog&url=http://txtyb.github.io&pic=http://txtyb.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=txtyb's Blog&url=http://txtyb.github.io&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io&title=用 FL Studio自带插件Newtone给干声加颤音" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=用 FL Studio自带插件Newtone给干声加颤音&summary=&pics=http://txtyb.github.io/img/suka-favicon.ico&url=http://txtyb.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://txtyb.github.io&text=用 FL Studio自带插件Newtone给干声加颤音" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAAAAADBtVLEAAADs0lEQVR42u3a0W7bMAyF4bz/S29XA4Yu4vmPu8ZM8Ptma5PK+gxIokk+fn3g9RAlSpQoUR+HegzXn8///h75m39u9uSzr+N/HffZ99I9RYnagjpNZPr5NMFnD+UZ4BnoNHk6T1GiNqGmQdKG0Czw00Zx+k76nihR74aaJpoO17SBnP6e3FuUqE9ApUMwBb3TBhFfAEWJejPUNMjpcJyC3+ZhTJtFE3iLErUFRRMvd//7I9kkUaL+M4oeeiTRkl4kU5Kz2WC+VfUQJeoHUVPi/nTT0yFJAtr2ocTNgUQUokS9EJWC2JTYnALTNBmSvEwBdtz9RIm6AUUmPRXK0mcnaPvZ9EBEidqCooHodAMyORIcp4cRxxIlahGKFtbIwm2KbNPDSHMSJWozatoEmomSl7v2/2nTECVqE6otHJMGxFSII4FvDF6nw1eUqBtRJFCkjVCnyaSGEoqOxXJRohagUkGsbQqhD4Ieyk0RTpSoTSjSaJiao1JzPA1c6UMQJWojqi2okZfGB7gSvC36iRK1BZWarEhRjCRg0kaCC2vTvUWJWoBqm6RIk2Nq5rjasBUTqqJELUCRBqhmQ5gmTBOfVwvjokRtQZHNgiTv6SKfDtfpgcZGFlGilqBSAEmLB6nBMRWnp8/TPEWJ2oKqGzBCYxU9bJvNiCRYRYnagkpNgujl7EJzCC02NBuXKFGbUGQR06RnU6wmDYt0TqJEbUC1xbMmgZmC4HZjqAJaUaJuQqVEZGp6Io1RVzeClOSJAa0oUTegSFKRJBmbhqv0QpqCZ9RwJUrUjSj6spcW+5SwoY2/JCg4ji9K1EIUTYqkwLYqloV70oKdKFEbUO3AqTCQkqJNMjMFALiSKErUC1Gp0EUaGmnRjEw+BclVMlOUqJtQVxZzczDThA5N5lyKKESJeiGqSY7Q4HYarwmSL3e8iBJ1I6oJWptkSZuMIT+PiSFRopahpsCTNCSShT2Nm4oHMQEqStQCFElsTAM3QS8dixQdYjJTlKibUU2zU7OoSWE6bQTT76qOF1GiXoBqBpqSjqTYRgLf9Lsx+BUlagEqXSlp3yQiv9OEVTVciRJ1IyotbPqy951mxqbZaizwiRK1BHVa8LSBhGwk6T5N0RwnM0WJuhF1ZWGmm6WJ0sMXB8qiRL0Bqi2opYI0KZKnxOXxoYgS9Sao5uC8UjgjDZLkZVSUqE0oulCnAtjUSEX+ljajVJ2ZokTdgEqJl7YI1gbB0+ZDm1JEidqC+qRLlChRokR9zPUbDDe1gog3fUMAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">用 FL Studio自带插件Newtone给干声加颤音</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.jpg" src="/img/suka-lazyload.gif" alt="txtyb's Avatar">
+        <span>2019-07-28</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=用 FL Studio自带插件Newtone给干声加颤音&url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/&pic=http://txtyb.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=用 FL Studio自带插件Newtone给干声加颤音&url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/&via=txtyb" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/&title=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=txtyb's Blog&title=txtyb's Blog&summary=&pics=http://txtyb.github.io/img/suka-favicon.ico&url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://txtyb.github.io/2019/07/28/%E7%94%A8FL%20Studio%E8%87%AA%E5%B8%A6%E6%8F%92%E4%BB%B6Newtone%E7%BB%99%E5%B9%B2%E5%A3%B0%E5%8A%A0%E9%A2%A4%E9%9F%B3/&text=txtyb's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAAAAADBtVLEAAADs0lEQVR42u3a0W7bMAyF4bz/S29XA4Yu4vmPu8ZM8Ptma5PK+gxIokk+fn3g9RAlSpQoUR+HegzXn8///h75m39u9uSzr+N/HffZ99I9RYnagjpNZPr5NMFnD+UZ4BnoNHk6T1GiNqGmQdKG0Czw00Zx+k76nihR74aaJpoO17SBnP6e3FuUqE9ApUMwBb3TBhFfAEWJejPUNMjpcJyC3+ZhTJtFE3iLErUFRRMvd//7I9kkUaL+M4oeeiTRkl4kU5Kz2WC+VfUQJeoHUVPi/nTT0yFJAtr2ocTNgUQUokS9EJWC2JTYnALTNBmSvEwBdtz9RIm6AUUmPRXK0mcnaPvZ9EBEidqCooHodAMyORIcp4cRxxIlahGKFtbIwm2KbNPDSHMSJWozatoEmomSl7v2/2nTECVqE6otHJMGxFSII4FvDF6nw1eUqBtRJFCkjVCnyaSGEoqOxXJRohagUkGsbQqhD4Ieyk0RTpSoTSjSaJiao1JzPA1c6UMQJWojqi2okZfGB7gSvC36iRK1BZWarEhRjCRg0kaCC2vTvUWJWoBqm6RIk2Nq5rjasBUTqqJELUCRBqhmQ5gmTBOfVwvjokRtQZHNgiTv6SKfDtfpgcZGFlGilqBSAEmLB6nBMRWnp8/TPEWJ2oKqGzBCYxU9bJvNiCRYRYnagkpNgujl7EJzCC02NBuXKFGbUGQR06RnU6wmDYt0TqJEbUC1xbMmgZmC4HZjqAJaUaJuQqVEZGp6Io1RVzeClOSJAa0oUTegSFKRJBmbhqv0QpqCZ9RwJUrUjSj6spcW+5SwoY2/JCg4ji9K1EIUTYqkwLYqloV70oKdKFEbUO3AqTCQkqJNMjMFALiSKErUC1Gp0EUaGmnRjEw+BclVMlOUqJtQVxZzczDThA5N5lyKKESJeiGqSY7Q4HYarwmSL3e8iBJ1I6oJWptkSZuMIT+PiSFRopahpsCTNCSShT2Nm4oHMQEqStQCFElsTAM3QS8dixQdYjJTlKibUU2zU7OoSWE6bQTT76qOF1GiXoBqBpqSjqTYRgLf9Lsx+BUlagEqXSlp3yQiv9OEVTVciRJ1IyotbPqy951mxqbZaizwiRK1BHVa8LSBhGwk6T5N0RwnM0WJuhF1ZWGmm6WJ0sMXB8qiRL0Bqi2opYI0KZKnxOXxoYgS9Sao5uC8UjgjDZLkZVSUqE0oulCnAtjUSEX+ljajVJ2ZokTdgEqJl7YI1gbB0+ZDm1JEidqC+qRLlChRokR9zPUbDDe1gog3fUMAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5%E6%AD%A3%E9%A2%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">进入正题</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <p>在使用<code>Melodyne</code>调声的时候遇到了问题，<code>Melodyne</code>的Pitch工具仅支持对音符原有颤音曲线的幅度进行调整（包括颤音幅度和偏移），有很大局限。<img src="https://i.loli.net/2019/07/28/5d3d18c16fa0611559.png" alt="`Melodyne`的Pitch工具仅支持对音符原有颤音曲线的幅度进行调整"><br>查询后，发现水果的自带的<code>Newtone</code>竟附带了高级颤音编辑功能,<del>以前都没发现哈哈哈</del>。使用过后感觉不错，在这里写一下做下备忘。</p>
+<h1 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h1><p>首先进入水果，打开Newtone，推拽素材进入Newtone。<img src="https://i.loli.net/2019/07/28/5d3d1bf80ad0e81846.png" alt="12.png"><br>导入后就可以看到一个个的音符了。<img src="https://i.loli.net/2019/07/28/5d3d1cb774ff335999.png" alt="批注 2019-07-28 115504.png"><br>在目标音符上双击，进入高级编辑模式。<img src="https://i.loli.net/2019/07/28/5d3d1cf575b2d37980.png" alt="批注 2019-07-28 115607.png"><br>选择右上角剪刀工具内的<code>Advanced edit vibrato</code>选项。<img src="https://i.loli.net/2019/07/28/5d3d1d555773b47476.png" alt="批注 2019-07-28 115752.png"><br>调整蓝色竖线来改变颤音频率。<img src="https://i.loli.net/2019/07/28/5d3d1e18dbfd748665.png" alt="批注 2019-07-28 120116.png"><br>在音符左右侧按住鼠标左键移动分别调整音符左右侧的颤音音量。<img src="https://i.loli.net/2019/07/28/5d3d1e77f37ff71526.png" alt="批注 2019-07-28 120253.png"><br>非常方便，做好之后保存就完事了。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-12-20");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-07-28T03:31:12.000Z" itemprop="datePublished">2019-07-28</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-12-20T02:42:54.462Z" itemprop="dateModified">2019-12-20</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/%E9%9F%B3%E4%B9%90/" rel="tag">#&nbsp;音乐</a>
+
+<a class="post-tags-list-item" href="/tags/FL-Studio/" rel="tag">#&nbsp;FL Studio</a>
+
+<a class="post-tags-list-item" href="/tags/Newtone/" rel="tag">#&nbsp;Newtone</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2019/09/03/Win10%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5%E5%AE%BD%E5%B8%A6(PPPOE)/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Win10开机自动连接宽带(PPPOE)</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/07/21/%E5%B0%9D%E8%AF%95%E5%B0%86Windows10-Archlinux%E5%8F%8C%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E8%87%B3%E6%96%B0ssd%E7%9A%84%E8%AE%B0%E5%BD%953/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">尝试将Windows10+Archlinux双系统迁移至新ssd的记录3</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://txtyb.github.io">txtyb&#39;s Blog</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+        
+            Hosted on <a target="_blank" href="https://github.com/txtyb/txtyb.github.io" rel="nofollow noopener noreferrer noopener">GitHub Pages</a>
+        
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"log":false});</script></body>
+
+</html>
