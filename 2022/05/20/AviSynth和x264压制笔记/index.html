@@ -264,7 +264,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2022-05-20T07:57:48.000Z",
-    "dateModified": "2022-05-20T16:55:19.031Z",
+    "dateModified": "2022-05-23T17:53:04.191Z",
     "author": {
         "@type": "Person",
         "name": "txtyb",
@@ -508,7 +508,7 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8avs2pipemod%E8%BE%93%E5%87%BAyuv420p%E7%AE%A1%E9%81%93feed%E7%BB%99x264%E5%8E%8B%E5%88%B6"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用avs2pipemod输出yuv420p管道feed给x264压制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commands"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">commands:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mmd-avs"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">mmd.avs:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8FFmpeg%E8%A3%81%E5%89%AA%E8%A7%86%E9%A2%91"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用FFmpeg裁剪视频</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8avs2pipemod%E8%BE%93%E5%87%BAyuv420p%E7%AE%A1%E9%81%93feed%E7%BB%99x264%E5%8E%8B%E5%88%B6"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用avs2pipemod输出yuv420p管道feed给x264压制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commands"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">commands:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mmd-avs"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">mmd.avs:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8FFmpeg%E8%BE%93%E5%87%BAyuv420p%E7%AE%A1%E9%81%93feed%E7%BB%99svt-av1%E5%8E%8B%E5%88%B6"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用FFmpeg输出yuv420p管道feed给svt-av1压制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8FFmpeg%E8%A3%81%E5%89%AA%E8%A7%86%E9%A2%91"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用FFmpeg裁剪视频</span></a></li></ol>
                             </div>
                         
                     
@@ -533,14 +533,17 @@ window.oldVersion = [
 </blockquote>
 <h2 id="mmd-avs"><a href="#mmd-avs" class="headerlink" title="mmd.avs:"></a><code>mmd.avs</code>:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">video = ImageSource(&quot;H:\rurudommd\g1.0Adapted\%04d.png&quot;, start=31, end=6668).AssumeFPS(30).LanczosResize(2560, 1440).ConvertToYUV420</span><br><span class="line">video</span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <p><code>video</code>: Class clip</p>
 <p><code>ImageSource()</code>: 以图像序列作为输入源，以<code>0001.png</code>为文件名规则，导入<code>0031.png</code>至<code>6668.png</code>的所有帧。</p>
 <p><code>AssumeFPS()</code>: 指明输入为30fps</p>
 <p><code>LanczosResize()</code>: 缩放视频为2560x1440p</p>
 <p><code>ConvertToYUV420</code>: 转换输出为yuv420</p>
-</blockquote>
-<p>··</p>
+<h1 id="使用FFmpeg输出yuv420p管道feed给svt-av1压制"><a href="#使用FFmpeg输出yuv420p管道feed给svt-av1压制" class="headerlink" title="使用FFmpeg输出yuv420p管道feed给svt-av1压制"></a>使用FFmpeg输出yuv420p管道feed给svt-av1压制</h1><p>example: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -framerate 30 -start_number 31 -i &quot;H:\rurudommd\g1.0Adapted\%04d.png&quot; -loglevel quiet -f yuv4mpegpipe -pix_fmt yuv420p - | SvtAv1EncApp.exe -i stdin --tune 0 --crf 18 --preset 4 --keyint 480 --output svttest.ivf</span><br></pre></td></tr></table></figure>
+
+<p><code>-framerate 30</code>: 因为输入的是图片序列，所以需要指定帧率</p>
+<p><code>-loglevel quiet</code>: 关闭FFmpeg的log输出，避免与编码器的log重叠</p>
+<p><code>--tune 0</code>: 使编码器对VQ(Visual Quality)做优化</p>
 <h1 id="使用FFmpeg裁剪视频"><a href="#使用FFmpeg裁剪视频" class="headerlink" title="使用FFmpeg裁剪视频"></a>使用FFmpeg裁剪视频</h1><p>example: </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 1:38 -t 8 -i mmdcrf18.mkv -c copy cut.mp4</span><br></pre></td></tr></table></figure>
 
@@ -552,7 +555,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
     <script>
-        var dateUpdate = Date.parse("2022-05-21");
+        var dateUpdate = Date.parse("2022-05-24");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -567,7 +570,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-05-20T07:57:48.000Z" itemprop="datePublished">2022-05-20</time>
 
-    , 最后修改于&nbsp;<time datetime="2022-05-20T16:55:19.031Z" itemprop="dateModified">2022-05-21</time>
+    , 最后修改于&nbsp;<time datetime="2022-05-23T17:53:04.191Z" itemprop="dateModified">2022-05-24</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
